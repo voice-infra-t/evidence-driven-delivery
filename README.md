@@ -1,4 +1,4 @@
-# Evidence-Driven Delivery Demo
+# evidence-driven-delivery-demo
 
 **English**  
 This repository is a minimal demo of Evidence-Driven Delivery.  
@@ -23,8 +23,6 @@ This demo uses a deliberately simple Simple Decision API to show a practical rel
 
 **English**
 
-- Educational/demo only.
-- Not for production use.
 - This repository is for educational and demonstration purposes only.
 - It is not intended for production use.
 - Before any production-like use, implement additional security controls, operational design, and compliance review.
@@ -95,6 +93,42 @@ The objective is not domain complexity. The objective is to make evidence and re
 - テスト、観測、リリース条件を一気通貫でつなぐ。
 - 実装の感触ではなく証跡の状態でリリース判断を行う。
 
+## Positioning / 位置づけ
+
+**English**
+
+Evidence-Driven Delivery does not replace Agile, TDD, ODD, DevOps, CI/CD, SRE, DevSecOps, Quality Gates, or Assurance Cases. It treats the outputs of those practices as release decision evidence.
+
+- TDD helps define and verify expected behavior.
+- ODD makes runtime behavior observable.
+- CI/CD runs checks and produces artifacts.
+- Quality Gates evaluate predefined conditions.
+- DevSecOps contributes security and supply-chain evidence.
+- SRE contributes operational and reliability evidence.
+- Assurance Cases contribute structured reasoning about why a system is acceptable.
+- Evidence-Driven Delivery connects those outputs to a release decision.
+
+Existing practices produce signals. Evidence-Driven Delivery turns those signals into release decisions.
+
+See [docs/07_positioning.md](docs/07_positioning.md) for details.
+
+**日本語**
+
+Evidence-Driven Delivery は Agile、TDD、ODD、DevOps、CI/CD、SRE、DevSecOps、Quality Gate、Assurance Case を置き換えるものではありません。それらの実践が生み出す出力を、リリース判断のための証跡として束ねます。
+
+- TDD は期待動作の定義と検証を支える。
+- ODD は実行時の挙動を観測可能にする。
+- CI/CD は検査を実行し、成果物を生成する。
+- Quality Gate は定義済み条件を評価する。
+- DevSecOps はセキュリティとサプライチェーン上の証跡を提供する。
+- SRE は運用信頼性に関する証跡を提供する。
+- Assurance Case はシステムが許容可能である理由づけを構造化する。
+- Evidence-Driven Delivery は、それらの出力をリリース判断へ接続する。
+
+既存の実践はシグナルを生む。Evidence-Driven Delivery は、そのシグナルをリリース判断へ変換する。
+
+詳細は [docs/07_positioning.md](docs/07_positioning.md) を参照してください。
+
 ## ODD Relationship / ODDとの関係
 
 **English**  
@@ -141,6 +175,20 @@ Release Gate
 - CD相当の判定ステップ:
   - `python scripts/evaluate_release_gate.py`
   - 出力: `evidence/release-decision.json`
+
+## Release Decision as an Artifact / 成果物としてのリリース判断
+
+**English**
+
+This demo treats the release decision itself as an artifact. The pipeline produces not only test logs, but also a machine-readable release decision.
+
+`evidence/release-decision.json` describes what is releasable, why it is releasable, and what is not in scope. It is not just a test log; it is an artifact of release judgment.
+
+**日本語**
+
+このデモでは、release decision そのものを成果物として扱います。pipeline は test logs だけでなく、machine-readable な release decision も生成します。
+
+`evidence/release-decision.json` は、何が releasable か、なぜ releasable か、何が not in scope かを表します。これは単なるテストログではなく、リリース判断の成果物です。
 
 ## Local Run (PowerShell) / ローカル実行（PowerShell）
 
@@ -381,7 +429,7 @@ HTTP 422 validation error
 - AI/LLM-based decision
 - database persistence
 - production deployment orchestration
-- organization-specific business workflow
+- domain-specific workflow
 
 **日本語**
 
@@ -389,7 +437,7 @@ HTTP 422 validation error
 - AI/LLMによる判定
 - データベース永続化
 - 本番デプロイ運用
-- 組織固有の業務ワークフロー
+- 特定ドメイン固有のワークフロー
 
 ## Public Release Checklist / 公開前チェックリスト
 
