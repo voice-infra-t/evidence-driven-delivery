@@ -1,0 +1,23 @@
+{
+  "test_run_id": "sample-run",
+  "result": "PASS",
+  "requirements_covered": [
+    "R-001",
+    "R-002",
+    "R-003",
+    "R-004",
+    "R-005",
+    "R-006"
+  ],
+  "risks_mitigated": [
+    "Risk-001",
+    "Risk-002",
+    "Risk-003",
+    "Risk-004",
+    "Risk-005"
+  ],
+  "tests": {
+    "passed": 12,
+    "failed": 0
+  }
+}
