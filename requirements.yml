@@ -1,0 +1,141 @@
+requirements:
+  - id: R-001
+    title: Approve high numeric value
+    description: A numeric input greater than or equal to 80 is approved.
+    acceptance_criteria:
+      - value=90 returns decision=approve with reason="value >= 80".
+      - value=80 returns decision=approve with reason="value >= 80".
+    risks:
+      - Risk-002
+      - Risk-004
+    tests:
+      - tests/test_decision_normal.py::test_decide_approve_90
+      - tests/test_decision_normal.py::test_decide_approve_80
+    observability_fields:
+      - id
+      - input_value
+      - decision
+      - reason
+      - fallback_reason
+      - timestamp
+    release_gate:
+      - junit_passed
+      - evidence_generated
+      - traceability_complete
+
+  - id: R-002
+    title: Review middle numeric value
+    description: A numeric input from 50 through 79 is routed to review.
+    acceptance_criteria:
+      - value=70 returns decision=review with reason="50 <= value < 80".
+      - value=50 returns decision=review with reason="50 <= value < 80".
+    risks:
+      - Risk-002
+      - Risk-004
+    tests:
+      - tests/test_decision_normal.py::test_decide_review_70
+      - tests/test_decision_normal.py::test_decide_review_50
+    observability_fields:
+      - id
+      - input_value
+      - decision
+      - reason
+      - fallback_reason
+      - timestamp
+    release_gate:
+      - junit_passed
+      - evidence_generated
+      - traceability_complete
+
+  - id: R-003
+    title: Reject low numeric value
+    description: A numeric input less than 50 is rejected.
+    acceptance_criteria:
+      - value=30 returns decision=reject with reason="value < 50".
+    risks:
+      - Risk-004
+      - Risk-005
+    tests:
+      - tests/test_decision_normal.py::test_decide_reject_30
+    observability_fields:
+      - id
+      - input_value
+      - decision
+      - reason
+      - fallback_reason
+      - timestamp
+    release_gate:
+      - junit_passed
+      - evidence_generated
+      - traceability_complete
+
+  - id: R-004
+    title: Fallback invalid input
+    description: Missing, boolean, or non-numeric values are handled as fallback decisions.
+    acceptance_criteria:
+      - value=null returns decision=fallback with fallback_reason="missing_or_invalid_value".
+      - value="abc" returns decision=fallback with fallback_reason="missing_or_invalid_value".
+      - value=true returns decision=fallback with fallback_reason="missing_or_invalid_value".
+    risks:
+      - Risk-001
+      - Risk-004
+      - Risk-005
+    tests:
+      - tests/test_decision_fallback.py::test_decide_fallback_none
+      - tests/test_decision_fallback.py::test_decide_fallback_string
+      - tests/test_decision_fallback.py::test_decide_fallback_bool
+    observability_fields:
+      - id
+      - input_value
+      - decision
+      - reason
+      - fallback_reason
+      - timestamp
+    release_gate:
+      - junit_passed
+      - evidence_generated
+      - traceability_complete
+
+  - id: R-005
+    title: Validate required id
+    description: Missing or empty id values are rejected by request validation before decision logic runs.
+    acceptance_criteria:
+      - A request without id returns HTTP 422 validation error.
+      - A request with an empty id returns HTTP 422 validation error.
+    risks:
+      - Risk-003
+      - Risk-005
+    tests:
+      - tests/test_decision_fallback.py::test_validation_error_when_id_missing
+      - tests/test_decision_fallback.py::test_validation_error_when_id_empty
+    observability_fields:
+      - http_status
+      - validation_error
+    release_gate:
+      - junit_passed
+      - evidence_generated
+      - traceability_complete
+
+  - id: R-006
+    title: Preserve decision reason
+    description: Every decision response includes either reason or fallback_reason for release judgment evidence.
+    acceptance_criteria:
+      - Normal decisions include reason.
+      - Fallback decisions include fallback_reason.
+    risks:
+      - Risk-004
+      - Risk-005
+    tests:
+      - tests/test_decision_fallback.py::test_decision_and_fallback_reason_presence
+      - tests/test_decision_fallback.py::test_observation_contains_required_fields
+    observability_fields:
+      - id
+      - input_value
+      - decision
+      - reason
+      - fallback_reason
+      - timestamp
+    release_gate:
+      - junit_passed
+      - evidence_generated
+      - traceability_complete

@@ -11,4 +11,5 @@ Release Gate v0.1
 5. bool value は fallback になる
 6. すべての判定に `reason` または `fallback_reason` が含まれる
 7. `evidence/test-report.json` が生成される
-8. `evidence/release-decision.json` が生成され、`release_decision` が `"releasable"` である
+8. `evidence/traceability-matrix.json` が生成され、必要な要件IDをすべて含む
+9. `evidence/release-decision.json` が生成され、`release_decision` が `"releasable"` である

@@ -29,6 +29,9 @@ jobs:
       - name: Generate test evidence
         run: python scripts/generate_evidence.py
 
+      - name: Generate traceability matrix
+        run: python scripts/generate_traceability_matrix.py
+
       - name: Evaluate release gate
         run: python scripts/evaluate_release_gate.py
 

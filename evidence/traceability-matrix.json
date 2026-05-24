@@ -1,0 +1,163 @@
+{
+  "summary": {
+    "requirements_total": 6,
+    "requirements_with_tests": 6,
+    "requirements_with_observability": 6,
+    "requirements_with_release_gate": 6,
+    "traceability_status": "complete"
+  },
+  "requirements": [
+    {
+      "requirement_id": "R-001",
+      "title": "Approve high numeric value",
+      "tests": [
+        "tests/test_decision_normal.py::test_decide_approve_90",
+        "tests/test_decision_normal.py::test_decide_approve_80"
+      ],
+      "observability_fields": [
+        "id",
+        "input_value",
+        "decision",
+        "reason",
+        "fallback_reason",
+        "timestamp"
+      ],
+      "release_gate": [
+        "junit_passed",
+        "evidence_generated",
+        "traceability_complete"
+      ],
+      "coverage": {
+        "has_tests": true,
+        "has_observability_fields": true,
+        "has_release_gate": true
+      }
+    },
+    {
+      "requirement_id": "R-002",
+      "title": "Review middle numeric value",
+      "tests": [
+        "tests/test_decision_normal.py::test_decide_review_70",
+        "tests/test_decision_normal.py::test_decide_review_50"
+      ],
+      "observability_fields": [
+        "id",
+        "input_value",
+        "decision",
+        "reason",
+        "fallback_reason",
+        "timestamp"
+      ],
+      "release_gate": [
+        "junit_passed",
+        "evidence_generated",
+        "traceability_complete"
+      ],
+      "coverage": {
+        "has_tests": true,
+        "has_observability_fields": true,
+        "has_release_gate": true
+      }
+    },
+    {
+      "requirement_id": "R-003",
+      "title": "Reject low numeric value",
+      "tests": [
+        "tests/test_decision_normal.py::test_decide_reject_30"
+      ],
+      "observability_fields": [
+        "id",
+        "input_value",
+        "decision",
+        "reason",
+        "fallback_reason",
+        "timestamp"
+      ],
+      "release_gate": [
+        "junit_passed",
+        "evidence_generated",
+        "traceability_complete"
+      ],
+      "coverage": {
+        "has_tests": true,
+        "has_observability_fields": true,
+        "has_release_gate": true
+      }
+    },
+    {
+      "requirement_id": "R-004",
+      "title": "Fallback invalid input",
+      "tests": [
+        "tests/test_decision_fallback.py::test_decide_fallback_none",
+        "tests/test_decision_fallback.py::test_decide_fallback_string",
+        "tests/test_decision_fallback.py::test_decide_fallback_bool"
+      ],
+      "observability_fields": [
+        "id",
+        "input_value",
+        "decision",
+        "reason",
+        "fallback_reason",
+        "timestamp"
+      ],
+      "release_gate": [
+        "junit_passed",
+        "evidence_generated",
+        "traceability_complete"
+      ],
+      "coverage": {
+        "has_tests": true,
+        "has_observability_fields": true,
+        "has_release_gate": true
+      }
+    },
+    {
+      "requirement_id": "R-005",
+      "title": "Validate required id",
+      "tests": [
+        "tests/test_decision_fallback.py::test_validation_error_when_id_missing",
+        "tests/test_decision_fallback.py::test_validation_error_when_id_empty"
+      ],
+      "observability_fields": [
+        "http_status",
+        "validation_error"
+      ],
+      "release_gate": [
+        "junit_passed",
+        "evidence_generated",
+        "traceability_complete"
+      ],
+      "coverage": {
+        "has_tests": true,
+        "has_observability_fields": true,
+        "has_release_gate": true
+      }
+    },
+    {
+      "requirement_id": "R-006",
+      "title": "Preserve decision reason",
+      "tests": [
+        "tests/test_decision_fallback.py::test_decision_and_fallback_reason_presence",
+        "tests/test_decision_fallback.py::test_observation_contains_required_fields"
+      ],
+      "observability_fields": [
+        "id",
+        "input_value",
+        "decision",
+        "reason",
+        "fallback_reason",
+        "timestamp"
+      ],
+      "release_gate": [
+        "junit_passed",
+        "evidence_generated",
+        "traceability_complete"
+      ],
+      "coverage": {
+        "has_tests": true,
+        "has_observability_fields": true,
+        "has_release_gate": true
+      }
+    }
+  ]
+}

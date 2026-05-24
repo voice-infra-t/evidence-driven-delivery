@@ -1,12 +1,23 @@
-# evidence-driven-delivery-demo
+# evidence-driven-delivery-public
+
+[![CI](https://github.com/voice-infra-t/evidence-driven-delivery-public/actions/workflows/ci.yml/badge.svg)](https://github.com/voice-infra-t/evidence-driven-delivery-public/actions/workflows/ci.yml)
+
+**CI Evidence Pipeline**
+
+- English: The CI badge points to the workflow that runs tests and generates evidence artifacts for the release gate.
+- 日本語: CIバッジは、テストと証跡生成パイプラインの状態を確認する入口です。
 
 **English**  
 This repository is a minimal demo of Evidence-Driven Delivery.  
 Core message: **Do not release because code is finished; release because evidence is complete.**
 
+Evidence-Driven Delivery extends traditional requirement traceability into executable delivery evidence. It connects requirements, risks, tests, CI/CD results, observability, and release judgment.
+
 **日本語**  
 このリポジトリは Evidence-Driven Delivery（証跡駆動デリバリー）の最小デモです。  
 中心メッセージ: **コードが完成したからリリースするのではなく、出してよい証跡が揃ったものをリリースする。**
+
+Evidence-Driven Delivery は、従来の要件トレーサビリティを、実行可能なデリバリー証跡へ拡張する考え方です。要件、リスク、テスト、CI/CD結果、観測可能性、リリース判断を一本の証跡線で接続します。
 
 ## Purpose / 目的
 
@@ -111,6 +122,7 @@ Evidence-Driven Delivery does not replace Agile, TDD, ODD, DevOps, CI/CD, SRE, D
 Existing practices produce signals. Evidence-Driven Delivery turns those signals into release decisions.
 
 See [docs/07_positioning.md](docs/07_positioning.md) for details.
+See [docs/08_traceability_to_release.md](docs/08_traceability_to_release.md) for traceability to release judgment, and [docs/09_ai_generated_test_expansion.md](docs/09_ai_generated_test_expansion.md) for AI-generated test expansion.
 
 **日本語**
 
@@ -162,6 +174,7 @@ Release Gate
   - `ruff check .`
   - `pytest --junitxml=evidence/junit.xml`
   - `python scripts/generate_evidence.py`
+  - `python scripts/generate_traceability_matrix.py`
 - CD-like decision step:
   - `python scripts/evaluate_release_gate.py`
   - output: `evidence/release-decision.json`
@@ -172,6 +185,7 @@ Release Gate
   - `ruff check .`
   - `pytest --junitxml=evidence/junit.xml`
   - `python scripts/generate_evidence.py`
+  - `python scripts/generate_traceability_matrix.py`
 - CD相当の判定ステップ:
   - `python scripts/evaluate_release_gate.py`
   - 出力: `evidence/release-decision.json`
@@ -216,6 +230,7 @@ uvicorn app.main:app --reload
 ruff check .
 pytest --junitxml=evidence/junit.xml
 python scripts/generate_evidence.py
+python scripts/generate_traceability_matrix.py
 python scripts/evaluate_release_gate.py
 ```
 
@@ -318,6 +333,7 @@ How this browser demo relates to Evidence-Driven Delivery:
 - `/decide` shows runtime decision behavior.
 - `pytest --junitxml=evidence/junit.xml` verifies the behavior.
 - `scripts/generate_evidence.py` converts test output into evidence.
+- `scripts/generate_traceability_matrix.py` connects requirements to tests, observability, and release gate conditions.
 - `scripts/evaluate_release_gate.py` creates release decision from evidence.
 - Browser checks confirm behavior; release readiness is decided by evidence and release gate.
 
