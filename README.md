@@ -1,6 +1,6 @@
-# evidence-driven-delivery-public
+# Evidence-Driven Delivery
 
-[![CI](https://github.com/voice-infra-t/evidence-driven-delivery-public/actions/workflows/ci.yml/badge.svg)](https://github.com/voice-infra-t/evidence-driven-delivery-public/actions/workflows/ci.yml)
+[![CI](https://github.com/voice-infra-t/evidence-driven-delivery/actions/workflows/ci.yml/badge.svg)](https://github.com/voice-infra-t/evidence-driven-delivery/actions/workflows/ci.yml)
 
 **CI Evidence Pipeline**
 
