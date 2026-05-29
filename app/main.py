@@ -6,10 +6,10 @@ from .decision import decide
 from .models import DecisionRequest, DecisionResponse
 
 app = FastAPI(
-    title="Simple Decision API / シンプル判定 API",
+    title="Simple Decision API",
     description=(
-        "A minimal API to demonstrate deterministic decision behavior.\n\n"
-        "証跡駆動デリバリーを説明するための最小判定 API です。"
+        "A deliberately simple API used by the Evidence-Driven Delivery "
+        "reference implementation."
     ),
 )
 
@@ -17,10 +17,9 @@ app = FastAPI(
 @app.post(
     "/decide",
     response_model=DecisionResponse,
-    summary="Make a decision / 判定を実行する",
+    summary="Make a decision",
     description=(
-        "Input an id and value, then return approve/review/reject/fallback.\n\n"
-        "id と value を入力し、approve/review/reject/fallback を返します。"
+        "Input an id and value, then return approve, review, reject, or fallback."
     ),
 )
 def create_decision(request: DecisionRequest) -> DecisionResponse:

@@ -1,17 +1,23 @@
 # 03: Observability
 
-このデモでは、すべての判定で以下を観測します。
+Evidence-Driven Delivery uses observability evidence to make runtime decisions
+explainable.
 
-- id
-- input_value
-- decision
-- reason
-- fallback_reason
-- timestamp
+For every Simple Decision API result, the reference implementation can record:
 
-この記録を `app.evidence.build_observation` として実装し、  
-判断結果がどの入力からどのように導出されたかを追跡可能にします。
+- `id`
+- `input_value`
+- `decision`
+- `reason`
+- `fallback_reason`
+- `timestamp`
 
-観測がなければ、判断の説明責任が成立しません。  
-また、判断が説明できない状態では、リリースゲートに必要な証跡を扱えません。  
-これが ODD / Observability-Driven Development の最小例です。
+The implementation is intentionally small:
+
+```text
+app.evidence.build_observation
+```
+
+The point is the release evidence contract. A release decision is stronger when
+the system can explain which input led to which decision and why that decision
+was returned.

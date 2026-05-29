@@ -53,7 +53,7 @@ def generate_report(
         "tests": {"passed": passed, "failed": failed},
     }
     report_path.parent.mkdir(parents=True, exist_ok=True)
-    report_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    report_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8", newline="\n")
     return payload
 
 

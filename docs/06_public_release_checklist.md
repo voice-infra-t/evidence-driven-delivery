@@ -1,24 +1,42 @@
 # 06: Public Release Checklist
 
-This checklist is for preparing this repository for public visibility.
+Use this checklist before publishing artifacts from the private working
+repository to the public repository.
 
-## Checklist
+## Content Scope
 
-- Secrets and sensitive data:
-  - No API keys, tokens, credentials, certificates, or private data in repository files, commits, or artifacts.
-- License:
-  - `LICENSE` file exists and is consistent with `README.md` license section.
-- Non-production use statement:
-  - README clearly states educational/demo only and not for production use.
-- Dependency hygiene:
-  - Dependencies are reviewed, version constraints are intentional, and unnecessary packages are removed.
-- Evidence file handling:
-  - Keep only safe, non-sensitive sample/generated evidence.
-  - Validate that evidence files do not contain secrets or private operational information.
+- README and docs are English-first.
+- The repository is positioned as a minimal reference implementation.
+- The Simple Decision API remains intentionally simple.
+- No LLM integration, database persistence, external API integration, custom UI,
+  or business-domain-specific workflow is added.
 
-## Future Work
+## Evidence Scope
 
-- Add `pip-audit` to CI for dependency vulnerability checks.
-- Add `gitleaks` to CI for secret detection.
-- Enable `Dependabot` for dependency update PRs.
-- Enable repository-level secret scanning.
+- `evidence/junit.xml` contains only test result data.
+- `evidence/test-report.json` contains no local paths or sensitive values.
+- `evidence/traceability-matrix.json` contains only repository-relative test references.
+- `evidence/release-decision.json` contains no local paths or sensitive values.
+
+## Repository Safety
+
+- Public files are synced from an allow list only.
+- `.git` directories are never copied.
+- Private Git history is not pushed to the public repository.
+- CI badges and repository links point to the public repository.
+- Markdown files remain UTF-8 with LF line endings.
+
+## Search Checks
+
+Before publication, search for:
+
+- private repository names
+- local absolute paths
+- user profile paths
+- API keys
+- access tokens
+- passwords
+- private keys
+- internal-only URLs or names
+
+Any uncertain file stays private until it has been reviewed.

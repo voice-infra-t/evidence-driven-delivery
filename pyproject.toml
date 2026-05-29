@@ -3,9 +3,9 @@ requires = ["setuptools>=75.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "evidence-driven-decision-demo"
+name = "evidence-driven-delivery-reference"
 version = "0.1.0"
-description = "Minimal Evidence-Driven Delivery demo with a simple decision API."
+description = "Minimal Evidence-Driven Delivery reference implementation with a simple decision API."
 requires-python = ">=3.11"
 readme = "README.md"
 dependencies = [

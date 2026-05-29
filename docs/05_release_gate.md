@@ -1,15 +1,27 @@
 # 05: Release Gate
 
-Release Gate v0.1
+The release gate evaluates whether the evidence is complete enough to publish a
+release decision.
 
-以下を満たす場合のみ `releasable` とする。
+Release Gate v0.1 returns `releasable` only when all criteria pass:
 
-1. 正常系テストがすべて PASS
-2. fallback系テストがすべて PASS
-3. id 欠損時は validation error になる
-4. 不正 value は fallback になる
-5. bool value は fallback になる
-6. すべての判定に `reason` または `fallback_reason` が含まれる
-7. `evidence/test-report.json` が生成される
-8. `evidence/traceability-matrix.json` が生成され、必要な要件IDをすべて含む
-9. `evidence/release-decision.json` が生成され、`release_decision` が `"releasable"` である
+1. All tests pass.
+2. Fallback behavior is verified.
+3. Missing `id` values are rejected by validation.
+4. Invalid `value` inputs return `fallback`.
+5. Boolean `value` inputs return `fallback`.
+6. Every decision includes `reason` or `fallback_reason`.
+7. `evidence/test-report.json` exists and reports `PASS`.
+8. `evidence/traceability-matrix.json` exists.
+9. The traceability matrix includes all required requirement IDs.
+10. `evidence/release-decision.json` is generated with `release_decision` set to `releasable`.
+
+The evaluator is:
+
+```powershell
+python scripts/evaluate_release_gate.py
+```
+
+The release gate does not prove the application is production-ready. It proves
+that the reference implementation has the evidence required by this repository's
+release criteria.

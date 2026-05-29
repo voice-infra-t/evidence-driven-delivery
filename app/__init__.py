@@ -1,2 +1,2 @@
-"""Application package for the Evidence-Driven Delivery demo."""
+"""Application package for the Evidence-Driven Delivery reference implementation."""
 

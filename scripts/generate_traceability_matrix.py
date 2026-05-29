@@ -20,7 +20,7 @@ def parse_key_value(text: str) -> tuple[str, str]:
 
 
 def parse_requirements_yaml(text: str) -> list[dict[str, Any]]:
-    # This intentionally supports only the simple requirements.yml shape used by this demo.
+    # This intentionally supports only the simple requirements.yml shape used here.
     requirements: list[dict[str, Any]] = []
     current_requirement: dict[str, Any] | None = None
     current_list_key: str | None = None
@@ -132,7 +132,7 @@ def generate_traceability_matrix(requirements_path: Path, output_path: Path) -> 
     payload = build_traceability_matrix(requirements)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    output_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8", newline="\n")
     return payload
 
 

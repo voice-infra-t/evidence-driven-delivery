@@ -17,13 +17,13 @@ class DecisionRequest(BaseModel):
 
     id: str = Field(
         ...,
-        description="Unique case id. Must not be blank. / 一意なID。空文字は不可。",
+        description="Unique case id. Must not be blank.",
     )
     value: Any | None = Field(
         default=None,
         description=(
             "Decision input value. Invalid types are handled as fallback "
-            "in decision logic. / 判定入力値。不正型は判定ロジックで fallback 扱い。"
+            "in decision logic."
         ),
     )
 
@@ -55,16 +55,16 @@ class DecisionResponse(BaseModel):
         }
     )
 
-    id: str = Field(..., description="Case id. / 判定対象ID。")
+    id: str = Field(..., description="Case id.")
     decision: Literal["approve", "review", "reject", "fallback"] = Field(
         ...,
-        description="Decision result. / 判定結果。",
+        description="Decision result.",
     )
     reason: str | None = Field(
         default=None,
-        description="Reason for approve/review/reject. / 通常判定時の理由。",
+        description="Reason for approve, review, or reject.",
     )
     fallback_reason: str | None = Field(
         default=None,
-        description="Reason for fallback. / fallback時の理由。",
+        description="Reason for fallback.",
     )

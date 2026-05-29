@@ -93,7 +93,7 @@ def evaluate_release_gate(report_path: Path, output_path: Path, traceability_pat
         },
     }
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    output_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8", newline="\n")
     return payload
 
 
