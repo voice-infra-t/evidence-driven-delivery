@@ -82,11 +82,19 @@ Decision rules:
 The repository treats release readiness as an artifact that can be generated and
 reviewed.
 
+- `evidence/README.md`: entry point for generated evidence artifacts.
+- `evidence/evidence-summary.md`: human-readable release evidence overview.
+- `evidence/traceability-report.md`: human-readable traceability report.
 - `requirements.yml`: requirements, risks, tests, observability fields, and release gate criteria.
 - `evidence/junit.xml`: test execution result from pytest.
 - `evidence/test-report.json`: normalized test evidence generated from JUnit XML.
 - `evidence/traceability-matrix.json`: requirement-to-test-to-release-gate traceability.
 - `evidence/release-decision.json`: release gate output.
+
+For human-readable evidence views, start with:
+
+- [evidence/evidence-summary.md](evidence/evidence-summary.md)
+- [evidence/traceability-report.md](evidence/traceability-report.md)
 
 `evidence/release-decision.json` is the release decision evidence. It states
 whether the current artifact is releasable, why, and what is out of scope.
@@ -123,6 +131,7 @@ pytest --junitxml=evidence/junit.xml
 python scripts/generate_evidence.py
 python scripts/generate_traceability_matrix.py
 python scripts/evaluate_release_gate.py
+python scripts/generate_evidence_summary.py
 ```
 
 The expected release decision is written to:

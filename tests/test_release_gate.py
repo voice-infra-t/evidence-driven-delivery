@@ -291,3 +291,4 @@ def test_release_scripts_exist():
     assert (REPO_ROOT / "scripts" / "generate_evidence.py").exists()
     assert (REPO_ROOT / "scripts" / "generate_traceability_matrix.py").exists()
     assert (REPO_ROOT / "scripts" / "evaluate_release_gate.py").exists()
+    assert (REPO_ROOT / "scripts" / "generate_evidence_summary.py").exists()
