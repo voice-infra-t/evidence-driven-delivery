@@ -17,6 +17,7 @@ permissions:
 jobs:
   analyze:
     name: Analyze Python
+    if: github.repository == 'voice-infra-t/evidence-driven-delivery'
     runs-on: ubuntu-latest
 
     steps:
