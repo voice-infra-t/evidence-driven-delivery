@@ -26,6 +26,15 @@ repository to the public repository.
 - CI badges and repository links point to the public repository.
 - Markdown files remain UTF-8 with LF line endings.
 
+## Security And Quality
+
+- Dependabot alerts are enabled.
+- Dependabot security updates are enabled.
+- Dependabot version updates are configured for Python dependencies and GitHub Actions.
+- CodeQL code scanning is enabled for pull requests and the default branch.
+- Secret scanning and push protection are enabled where available.
+- Private vulnerability reporting is enabled.
+
 ## Search Checks
 
 Before publication, search for:
