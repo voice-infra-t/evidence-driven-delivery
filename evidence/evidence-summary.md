@@ -5,7 +5,7 @@
 | Field | Value |
 |---|---|
 | Decision | releasable |
-| Scope | simple-decision-service v0.1 |
+| Scope | simple-decision-engine v0.1 |
 | Reason | All release gate conditions passed. |
 | Traceability | complete |
 
@@ -14,13 +14,14 @@
 | Field | Value |
 |---|---:|
 | Result | PASS |
-| Passed | 18 |
+| Passed | 21 |
 | Failed | 0 |
 | Requirements covered | 6 |
 | Risks mitigated | 5 |
 
 ## Not in Scope
 
+- HTTP API
 - external API integration
 - AI/LLM decision
 - database persistence

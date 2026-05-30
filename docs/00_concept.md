@@ -9,8 +9,9 @@ The core flow is:
 Requirement -> Risk -> Observability -> Test -> Evidence -> Release Gate
 ```
 
-The Simple Decision API is intentionally small. Its purpose is not domain
-complexity. Its purpose is to make the release evidence path explicit:
+The Simple Decision Engine is intentionally small. Its purpose is not domain
+complexity or HTTP service design. Its purpose is to make the release evidence
+path explicit:
 
 - Requirements define expected behavior.
 - Risks identify what could make the behavior unsafe or untrustworthy.

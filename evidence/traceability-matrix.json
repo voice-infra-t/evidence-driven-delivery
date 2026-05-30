@@ -119,7 +119,6 @@
         "tests/test_decision_fallback.py::test_validation_error_when_id_empty"
       ],
       "observability_fields": [
-        "http_status",
         "validation_error"
       ],
       "release_gate": [

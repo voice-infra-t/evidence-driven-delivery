@@ -21,7 +21,7 @@ Requirement -> Risk -> Observability -> Test -> CI/CD Evidence -> Release Decisi
 The connection is visible in repository files:
 
 - `requirements.yml` defines requirements, risks, tests, observability fields, and release gate criteria.
-- `tests/` verifies the Simple Decision API behavior.
+- `tests/` verifies the Simple Decision Engine behavior.
 - `scripts/generate_evidence.py` converts test execution into evidence.
 - `scripts/generate_traceability_matrix.py` builds traceability evidence.
 - `scripts/evaluate_release_gate.py` evaluates the release criteria.

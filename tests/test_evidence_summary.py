@@ -27,9 +27,10 @@ def test_generate_evidence_summary_creates_human_readable_reports(tmp_path: Path
         release_decision_path,
         {
             "release_decision": "releasable",
-            "scope": ["simple-decision-service v0.1"],
+            "scope": ["simple-decision-engine v0.1"],
             "reason": "All release gate conditions passed.",
             "not_in_scope": [
+                "HTTP API",
                 "external API integration",
                 "AI/LLM decision",
                 "database persistence",

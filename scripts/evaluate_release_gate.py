@@ -75,7 +75,7 @@ def evaluate_release_gate(report_path: Path, output_path: Path, traceability_pat
     payload = {
         "release_decision": "releasable" if releasable else "not_releasable",
         "scope": [
-            "simple-decision-service v0.1",
+            "simple-decision-engine v0.1",
         ],
         "reason": (
             "All release gate conditions passed."
@@ -83,6 +83,7 @@ def evaluate_release_gate(report_path: Path, output_path: Path, traceability_pat
             else "Release gate conditions not met."
         ),
         "not_in_scope": [
+            "HTTP API",
             "external API integration",
             "AI/LLM decision",
             "database persistence",
@@ -124,4 +125,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

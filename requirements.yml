@@ -98,10 +98,10 @@ requirements:
 
   - id: R-005
     title: Validate required id
-    description: Missing or empty id values are rejected by request validation before decision logic runs.
+    description: Missing or empty id values are rejected by input validation before decision logic runs.
     acceptance_criteria:
-      - A request without id returns HTTP 422 validation error.
-      - A request with an empty id returns HTTP 422 validation error.
+      - An input without id raises a validation error.
+      - An input with an empty id raises a validation error.
     risks:
       - Risk-003
       - Risk-005
@@ -109,7 +109,6 @@ requirements:
       - tests/test_decision_fallback.py::test_validation_error_when_id_missing
       - tests/test_decision_fallback.py::test_validation_error_when_id_empty
     observability_fields:
-      - http_status
       - validation_error
     release_gate:
       - junit_passed
@@ -118,7 +117,7 @@ requirements:
 
   - id: R-006
     title: Preserve decision reason
-    description: Every decision response includes either reason or fallback_reason for release judgment evidence.
+    description: Every decision result includes either reason or fallback_reason for release judgment evidence.
     acceptance_criteria:
       - Normal decisions include reason.
       - Fallback decisions include fallback_reason.

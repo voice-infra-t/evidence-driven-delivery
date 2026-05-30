@@ -1,6 +1,6 @@
 # 01: Requirements
 
-The Simple Decision API has six requirements.
+The Simple Decision Engine has six requirements.
 
 | ID | Requirement |
 |---|---|
@@ -9,7 +9,7 @@ The Simple Decision API has six requirements.
 | R-003 | A numeric value less than 50 returns `reject`. |
 | R-004 | A missing, boolean, or non-numeric value returns `fallback`. |
 | R-005 | A missing or blank `id` is rejected by validation before decision logic runs. |
-| R-006 | Every decision response includes either `reason` or `fallback_reason`. |
+| R-006 | Every decision result includes either `reason` or `fallback_reason`. |
 
 The detailed executable requirement map is maintained in
 [`requirements.yml`](../requirements.yml). That file connects each requirement

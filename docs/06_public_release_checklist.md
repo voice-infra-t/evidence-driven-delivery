@@ -7,9 +7,9 @@ repository to the public repository.
 
 - README and docs are English-first.
 - The repository is positioned as a minimal reference implementation.
-- The Simple Decision API remains intentionally simple.
+- The Simple Decision Engine remains intentionally simple.
 - No LLM integration, database persistence, external API integration, custom UI,
-  or business-domain-specific workflow is added.
+  HTTP API, or business-domain-specific workflow is added.
 
 ## Evidence Scope
 

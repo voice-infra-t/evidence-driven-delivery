@@ -9,7 +9,7 @@ untrustworthy.
 | Risk-002 | Values that require review are incorrectly approved. |
 | Risk-003 | Missing case identifiers make later traceability impossible. |
 | Risk-004 | Decision reasons are not recorded. |
-| Risk-005 | The service is released without test evidence. |
+| Risk-005 | The engine is released without test evidence. |
 
 Each risk is mapped to one or more requirements in
 [`requirements.yml`](../requirements.yml). The generated traceability matrix

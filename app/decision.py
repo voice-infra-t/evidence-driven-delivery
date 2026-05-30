@@ -2,16 +2,16 @@ from __future__ import annotations
 
 from typing import Any
 
-from .models import DecisionResponse
+from .models import DecisionResult
 
 
-def decide(case_id: str, value: Any) -> DecisionResponse:
+def decide(case_id: str, value: Any) -> DecisionResult:
     """
     Make a deterministic decision with strict fallback handling for invalid values.
     """
 
     if isinstance(value, bool) or value is None or not isinstance(value, (int, float)):
-        return DecisionResponse(
+        return DecisionResult(
             id=case_id,
             decision="fallback",
             reason=None,
@@ -19,7 +19,7 @@ def decide(case_id: str, value: Any) -> DecisionResponse:
         )
 
     if value >= 80:
-        return DecisionResponse(
+        return DecisionResult(
             id=case_id,
             decision="approve",
             reason="value >= 80",
@@ -27,14 +27,14 @@ def decide(case_id: str, value: Any) -> DecisionResponse:
         )
 
     if value >= 50:
-        return DecisionResponse(
+        return DecisionResult(
             id=case_id,
             decision="review",
             reason="50 <= value < 80",
             fallback_reason=None,
         )
 
-    return DecisionResponse(
+    return DecisionResult(
         id=case_id,
         decision="reject",
         reason="value < 50",

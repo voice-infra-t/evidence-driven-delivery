@@ -3,7 +3,7 @@
 ## Scope
 
 This repository is a minimal reference implementation of Evidence-Driven
-Delivery. It is not a production service template.
+Delivery. It is not a production application template.
 
 ## Reporting a Vulnerability
 

@@ -3,7 +3,7 @@
 Evidence-Driven Delivery uses observability evidence to make runtime decisions
 explainable.
 
-For every Simple Decision API result, the reference implementation can record:
+For every Simple Decision Engine result, the reference implementation can record:
 
 - `id`
 - `input_value`

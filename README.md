@@ -19,9 +19,10 @@ This repository is a minimal reference implementation of Evidence-Driven
 Delivery. It keeps the application deliberately simple so the evidence flow is
 easy to inspect and repeat.
 
-The reference application is the Simple Decision API. It exists to show how a
-small deterministic behavior can be connected to requirements, risks,
-observability fields, tests, generated evidence artifacts, and a release gate.
+The reference application is the Simple Decision Engine. It exists to show how
+a small deterministic behavior can be connected to requirements, risks,
+observability fields, tests, generated evidence artifacts, and a release gate
+without introducing HTTP service concerns.
 
 ```text
 Requirement -> Risk -> Observability -> Test -> Evidence -> Release Gate
@@ -31,7 +32,7 @@ Requirement -> Risk -> Observability -> Test -> Evidence -> Release Gate
 
 Included:
 
-- A small FastAPI service with one decision endpoint.
+- A small local Python decision engine with a CLI entry point.
 - Requirements and risks captured as repository files.
 - Tests that verify normal, fallback, and validation behavior.
 - Evidence generation scripts.
@@ -43,25 +44,25 @@ Deliberately not included:
 
 - LLM integration.
 - Database persistence.
-- External API integration.
+- HTTP API or external API integration.
 - A custom UI.
 - Authentication or authorization.
 - Business-domain-specific workflow.
 - Production deployment orchestration.
 
 This is a reference implementation for the delivery method, not a production
-service template.
+application template.
 
-## Simple Decision API
+## Simple Decision Engine
 
-Endpoint: `POST /decide`
+The engine can be called as a local Python function or through the CLI.
 
-Request fields:
+Input fields:
 
 - `id`: required non-empty string.
 - `value`: optional value used by the decision logic.
 
-Response fields:
+Output fields:
 
 - `decision`: one of `approve`, `review`, `reject`, or `fallback`.
 - `reason`: present for normal decisions.
@@ -108,7 +109,7 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -U pip
 pip install -e ".[dev]"
-uvicorn app.main:app --reload
+simple-decision --id case-001 --value 85
 ```
 
 Bash:
@@ -118,7 +119,7 @@ python -m venv .venv
 source .venv/bin/activate
 python -m pip install -U pip
 pip install -e ".[dev]"
-uvicorn app.main:app --reload
+simple-decision --id case-001 --value 85
 ```
 
 ## Verification
@@ -140,7 +141,7 @@ The expected release decision is written to:
 evidence/release-decision.json
 ```
 
-## Example Request
+## Example Input
 
 ```json
 {
@@ -149,7 +150,7 @@ evidence/release-decision.json
 }
 ```
 
-Expected response:
+Expected output:
 
 ```json
 {
@@ -160,7 +161,7 @@ Expected response:
 }
 ```
 
-Fallback example:
+Fallback input:
 
 ```json
 {
@@ -169,7 +170,7 @@ Fallback example:
 }
 ```
 
-Expected response:
+Expected output:
 
 ```json
 {

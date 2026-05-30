@@ -1,13 +1,19 @@
 from __future__ import annotations
 
-from fastapi.testclient import TestClient
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+import pytest
+from pydantic import ValidationError
 
 from app.decision import decide
 from app.evidence import build_observation
-from app.main import app
-from app.models import DecisionResponse
+from app.main import make_decision
+from app.models import DecisionInput, DecisionResult
 
-client = TestClient(app)
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_decide_fallback_none():
@@ -30,13 +36,33 @@ def test_decide_fallback_bool():
 
 
 def test_validation_error_when_id_missing():
-    response = client.post("/decide", json={"value": 80})
-    assert response.status_code == 422
+    with pytest.raises(ValidationError):
+        DecisionInput.model_validate({"value": 80})
 
 
 def test_validation_error_when_id_empty():
-    response = client.post("/decide", json={"id": "", "value": 80})
-    assert response.status_code == 422
+    with pytest.raises(ValidationError):
+        DecisionInput.model_validate({"id": "", "value": 80})
+
+
+def test_make_decision_validates_and_returns_result():
+    result = make_decision({"id": "case-001", "value": 80})
+    assert result.decision == "approve"
+    assert result.reason == "value >= 80"
+
+
+def test_cli_reads_json_and_writes_decision():
+    result = subprocess.run(
+        [sys.executable, "-m", "app.main", "--id", "case-001", "--value", "85"],
+        cwd=REPO_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0
+    payload = json.loads(result.stdout)
+    assert payload["id"] == "case-001"
+    assert payload["decision"] == "approve"
 
 
 def test_decision_and_fallback_reason_presence():
@@ -52,7 +78,7 @@ def test_decision_and_fallback_reason_presence():
 
 
 def test_observation_contains_required_fields():
-    response = DecisionResponse(
+    response = DecisionResult(
         id="case-001",
         decision="approve",
         reason="value >= 80",

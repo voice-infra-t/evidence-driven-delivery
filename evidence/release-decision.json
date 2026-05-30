@@ -1,10 +1,11 @@
 {
   "release_decision": "releasable",
   "scope": [
-    "simple-decision-service v0.1"
+    "simple-decision-engine v0.1"
   ],
   "reason": "All release gate conditions passed.",
   "not_in_scope": [
+    "HTTP API",
     "external API integration",
     "AI/LLM decision",
     "database persistence",

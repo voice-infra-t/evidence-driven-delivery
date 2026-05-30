@@ -5,7 +5,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
-class DecisionRequest(BaseModel):
+class DecisionInput(BaseModel):
     model_config = ConfigDict(
         json_schema_extra={
             "examples": [
@@ -35,7 +35,7 @@ class DecisionRequest(BaseModel):
         return v
 
 
-class DecisionResponse(BaseModel):
+class DecisionResult(BaseModel):
     model_config = ConfigDict(
         json_schema_extra={
             "examples": [

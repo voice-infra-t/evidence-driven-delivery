@@ -167,7 +167,7 @@ def test_evaluate_release_gate_creates_release_decision(tmp_path: Path):
     decision_payload = json.loads(decision_path.read_text(encoding="utf-8"))
     assert decision_path.exists()
     assert decision_payload["release_decision"] == "releasable"
-    assert decision_payload["scope"] == ["simple-decision-service v0.1"]
+    assert decision_payload["scope"] == ["simple-decision-engine v0.1"]
     assert decision_payload["reason"] == "All release gate conditions passed."
     assert decision_payload["traceability"]["summary"]["traceability_status"] == "complete"
 
